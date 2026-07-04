@@ -1,13 +1,13 @@
-# 🌦️ Pipeline Data Cloud : Prévisions Météo pour GreenAndCoop
+#  Pipeline Data Cloud : Prévisions Météo pour GreenAndCoop
 
-## 🎯 Contexte du projet
+## --- Contexte du projet ---
 L'entreprise **GreenAndCoop** a besoin d'analyser des données météorologiques pour optimiser ses opérations. 
 **Le problème :** Les données sources arrivent dans un format brut, non standardisé, et comportent des erreurs (valeurs aberrantes, doublons).
 **La solution :** Les Data Scientists ont besoin d'une donnée propre, fiable et prête à l'emploi. Ce projet consiste à créer un pipeline de données automatisé ("Zero-Touch") de bout en bout pour extraire, nettoyer et transformer ces données directement dans le Cloud.
 
 ---
 
-## 🛠️ Stack Technique & Étapes du Pipeline
+## --- Stack Technique & Étapes du Pipeline ---
 Ce projet suit une architecture moderne de type ELT (Extract, Load, Transform) :
 
 1. **Extraction & Chargement (Airbyte) :** Ingestion des données brutes depuis les sources vers la base de données.
@@ -16,7 +16,7 @@ Ce projet suit une architecture moderne de type ELT (Extract, Load, Transform) :
 
 ---
 
-## ☁️ Architecture Cloud (AWS)
+## --- Architecture Cloud (AWS) ---
 Le pipeline est entièrement déployé de manière automatisée et Serverless sur Amazon Web Services (AWS) :
 
 *   **Amazon RDS (PostgreSQL) :** Le Data Warehouse hébergeant les données brutes et les tables transformées.
@@ -28,7 +28,7 @@ Le pipeline est entièrement déployé de manière automatisée et Serverless su
 
 ---
 
-## 📂 Structure du Dépôt
+## --- Structure du Dépôt ---
 Pour aller à l'essentiel, ce dépôt se concentre sur la logique de transformation et l'infrastructure :
 
 *   `forecast_project/` : Contient tout le code source dbt (modèles SQL de staging et marts, tests de qualité de la donnée, configuration `dbt_project.yml`).
