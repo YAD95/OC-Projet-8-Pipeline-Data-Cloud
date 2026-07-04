@@ -25,13 +25,13 @@ Ce projet suit une architecture moderne de type ELT (Extract, Load, Transform) :
 ## Architecture Cloud (AWS)
 Le pipeline est entièrement déployé de manière automatisée et Serverless sur Amazon Web Services (AWS) :
 
-*   **Amazon EC2 :** Serveur virtuel (machine cloud) utilisé pour héberger et exécuter l'outil d'ingestion Airbyte.
-*   **Amazon RDS (PostgreSQL) :** Le Data Warehouse hébergeant les données brutes et les tables transformées.
-*   **AWS IAM :** Gestion stricte des identités, création des rôles et des politiques de sécurité pour limiter les accès.
-*   **Amazon ECR :** Registre privé sécurisé pour héberger l'image Docker contenant notre projet dbt.
-*   **Amazon ECS (Fargate) :** Service Serverless utilisé pour exécuter le conteneur dbt uniquement lorsque c'est nécessaire, optimisant ainsi les coûts.
-*   **Amazon EventBridge :** L'orchestrateur (cron) qui déclenche l'exécution quotidienne automatique du pipeline.
-*   **Amazon CloudWatch :** Centralisation et persistance des logs d'exécution du conteneur éphémère pour faciliter le monitoring et le débogage.
+*   **Amazon EC2 :** C'est la machine virtuelle qui sert de point d'entrée. Je l'utilise pour héberger Airbyte et faire tourner toute l'ingestion des données.
+*   **Amazon RDS (PostgreSQL) :** Notre Data Warehouse. C'est ici que tout atterrit et que sont stockées à la fois les données brutes et les tables finales nettoyées.
+*   **AWS IAM :** Indispensable pour la sécurité. J'y ai configuré les rôles et les permissions de manière stricte pour que chaque service n'ait accès qu'à ce dont il a besoin.
+*   **Amazon ECR :** L'espace de stockage sécurisé dans lequel je pousse l'image Docker contenant tout le code dbt.
+*   **Amazon ECS (Fargate) :** Le moteur Serverless du projet. Il permet d'exécuter notre conteneur dbt uniquement quand c'est nécessaire pour faire les transformations, ce qui évite de payer un serveur qui tourne dans le vide.
+*   **Amazon EventBridge :** (le planificateur) Je l'ai configuré pour déclencher tout le pipeline de manière automatique et quotidienne.
+*   **Amazon CloudWatch :** Comme les conteneurs Fargate sont éphémères et disparaissent après le travail, j'utilise CloudWatch pour récupérer, centraliser et surveiller tous les logs d'exécution.
 
 ---
 
