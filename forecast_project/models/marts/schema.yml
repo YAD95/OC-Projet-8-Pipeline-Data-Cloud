@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_weather_stations
+    description: "Table de dimension contenant les métadonnées des stations météo."
+    columns:
+      - name: station_id
+        description: "Clé primaire unique de la station."
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_weather_readings
+    description: "Table de faits contenant les relevés météorologiques horaires."
+    columns:
+      - name: station_id
+        description: "Clé étrangère vers la dimension des stations."
+        tests:
+          - not_null
+          # NOUVEAU : On vérifie que la station existe bien dans la dimension !
+          - relationships:
+              to: ref('dim_weather_stations')
+              field: station_id
+      - name: observation_timestamp
+        description: "Date et heure du relevé."
+        tests:
+          - not_null
+
+

@@ -1,0 +1,24 @@
+forecast_project:
+  target: dev  # Ici tu choisis qui est le "par défaut"
+  outputs:
+    # 1. Ta config pour ton ordi (Local)
+    dev:
+      type: postgres
+      host: localhost
+      user: ali_admin
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      port: 5433
+      dbname: weather_data
+      schema: public
+      threads: 1
+
+    # 2. Ta config pour le Cloud (AWS)
+    aws:
+      type: postgres
+      host: database-2.cf44a0w06wh1.eu-west-3.rds.amazonaws.com
+      user: postgres
+      password:  "{{ env_var('DBT_PASSWORD') }}"
+      port: 5432
+      dbname: weather_data_RDS
+      schema: public
+      threads: 1

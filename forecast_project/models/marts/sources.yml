@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: airbyte_raw
+    schema: public
+    tables:
+      - name: source_1_raw
+      - name: source_2_raw
+      - name: source_3_raw
+
